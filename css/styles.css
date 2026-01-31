@@ -107,7 +107,7 @@ body {
    ========================= */
 
 .nav-mobile {
-    display: none;
+    display: flex;
     position: fixed;
     top: 0;
     right: -100%;
@@ -170,7 +170,7 @@ body {
 }
 
 /* Fondo oscuro detrás del menú móvil */
-.nav-mobile-overlay {
+.overlay {
     display: none;
     position: fixed;
     inset: 0;
@@ -178,7 +178,7 @@ body {
     z-index: 1500;
 }
 
-.nav-mobile-overlay.open {
+.overlay.open {
     display: block;
 }
 
@@ -448,11 +448,6 @@ section {
     }
 
     .hamburger {
-        display: flex;
-    }
-
-    /* Nav móvil visible cuando tiene .open */
-    .nav-mobile {
         display: flex;
     }
 
