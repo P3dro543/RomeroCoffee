@@ -11,6 +11,10 @@ body {
     line-height: 1.6;
 }
 
+/* ========================= 
+   HEADER
+   ========================= */
+
 .header {
     position: fixed;
     top: 0;
@@ -41,7 +45,7 @@ body {
     object-fit: contain;
 }
 
-
+/* Nav desktop */
 .nav a {
     margin-left: 1.5rem;
     text-decoration: none;
@@ -64,6 +68,123 @@ body {
 .nav a:hover::after {
     width: 100%;
 }
+
+/* ========================= 
+   HAMBURGUESA
+   ========================= */
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.hamburger:hover {
+    background-color: rgba(30, 57, 50, 0.07);
+}
+
+.hamburger-line {
+    display: block;
+    width: 24px;
+    height: 2.5px;
+    background-color: #1e3932;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* ========================= 
+   NAV MÓVIL (overlay)
+   ========================= */
+
+.nav-mobile {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 72vw;
+    max-width: 300px;
+    height: 100%;
+    background-color: #1e3932;
+    z-index: 2000;
+    flex-direction: column;
+    padding: 5rem 2rem 2rem;
+    gap: 0.2rem;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.nav-mobile.open {
+    right: 0;
+}
+
+.nav-mobile a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 500;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.nav-mobile a:last-child {
+    border-bottom: none;
+}
+
+.nav-mobile a:hover,
+.nav-mobile a:active {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-mobile-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    background: none;
+    border: none;
+    color: #cfa15a;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.nav-mobile-close:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* Fondo oscuro detrás del menú móvil */
+.nav-mobile-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1500;
+}
+
+.nav-mobile-overlay.open {
+    display: block;
+}
+
+/* ========================= 
+   HERO
+   ========================= */
 
 .hero {
     height: 90vh;
@@ -91,12 +212,16 @@ body {
     font-size: 1.1rem;
 }
 
+/* ========================= 
+   SECTIONS
+   ========================= */
+
 section {
     opacity: 1;
     transform: translateY(0);
 }
 
-
+/* Card section (historia, que hacemos, equipo) */
 .card-section {
     display: flex;
     align-items: center;
@@ -124,6 +249,7 @@ section {
     margin-bottom: 1rem;
 }
 
+/* Secciones simples */
 .simple-section {
     padding: 5rem 3rem;
     max-width: 900px;
@@ -149,11 +275,22 @@ section {
 .simple-section.dark {
     background-color: #1e3932;
     color: #ffffff;
+    max-width: 100%;
 }
 
 .simple-section.dark h2 {
     color: #ffffff;
 }
+
+.simple-section.dark > p {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ========================= 
+   GALERÍA
+   ========================= */
 
 .gallery {
     display: grid;
@@ -172,60 +309,9 @@ section {
     transform: scale(1.05);
 }
 
-.proyectos-lista {
-    list-style: none;
-    margin-top: 2.5rem;
-    padding: 0;
-}
-
-.proyectos-lista li {
-    margin: 1.2rem 0;
-    font-size: 1.1rem;
-    padding-left: 1.8rem;
-    position: relative;
-}
-
-.proyectos-lista li::before {
-    content: "●";
-    position: absolute;
-    left: 0;
-    color: #cfa15a;
-    font-size: 1.3rem;
-}
-
-.footer {
-    background-color: #ffffff;
-    text-align: center;
-    padding: 2rem;
-    margin-top: 3rem;
-    font-size: 0.9rem;
-}
-
-@media (max-width: 900px) {
-
-    .nav {
-        display: none;
-    }
-
-    .hero-text h1 {
-        font-size: 2rem;
-    }
-
-    .card-section,
-    .card-section.reverse {
-        flex-direction: column;
-        padding: 4rem 2rem;
-    }
-
-    .card-section img,
-    .card-text {
-        width: 100%;
-    }
-
-    .gallery {
-        padding: 2rem;
-    }
-}
+/* ========================= 
+   PROYECTOS
+   ========================= */
 
 .proyectos-grid {
     margin-top: 40px;
@@ -249,6 +335,10 @@ section {
     transform: translateY(-6px);
     background-color: rgba(255, 255, 255, 0.15);
 }
+
+/* ========================= 
+   CLIENTES
+   ========================= */
 
 .clientes-grid {
     margin-top: 40px;
@@ -291,19 +381,16 @@ section {
     border-bottom: none;
 }
 
-
-/* =========================
-   CLIENTES CON BANDERAS
-   ========================= */
-
 .paises-lista li {
-    font-size: 1rem;
+    font-size: 1.05rem;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-
+/* ========================= 
+   REVEAL / ANIMACIONES
+   ========================= */
 
 .section-hidden {
     opacity: 0;
@@ -315,31 +402,262 @@ section {
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
 }
 
-
-/* cuando la sección ya es visible, permitir mostrar reveals */
 section:not(.section-hidden) .reveal {
     opacity: 1;
     transform: translateY(0);
 }
 
-.paises-lista li {
-    font-size: 1.05rem;
+/* ========================= 
+   FOOTER
+   ========================= */
+
+.footer {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+    font-size: 0.9rem;
 }
 
-.paises-lista li::first-letter {
-    font-size: 1.4rem;
-}
+/* ========================= 
+   SCROLL
+   ========================= */
 
 html {
     scroll-behavior: smooth;
 }
 
 section {
-    scroll-margin-top: 100px; /* altura del header */
+    scroll-margin-top: 100px;
+}
+
+/* ================================================
+   RESPONSIVE — TABLET (max 900px)
+   ================================================ */
+
+@media (max-width: 900px) {
+
+    /* Ocultar nav desktop, mostrar hamburguesa */
+    .nav {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    /* Nav móvil visible cuando tiene .open */
+    .nav-mobile {
+        display: flex;
+    }
+
+    /* Header menos padding */
+    .header {
+        padding: 0.8rem 1.5rem;
+    }
+
+    /* Hero */
+    .hero {
+        height: 70vh;
+        align-items: flex-end;
+        padding: 2rem 1.5rem;
+    }
+
+    .hero-text {
+        padding: 1.8rem;
+        max-width: 100%;
+    }
+
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    /* Card sections → columna */
+    .card-section,
+    .card-section.reverse {
+        flex-direction: column;
+        padding: 4rem 2rem;
+        gap: 2rem;
+    }
+
+    .card-section img,
+    .card-text {
+        width: 100%;
+    }
+
+    .card-text h2 {
+        font-size: 1.7rem;
+    }
+
+    /* Simple sections */
+    .simple-section {
+        padding: 3.5rem 1.8rem;
+    }
+
+    .simple-section h2 {
+        font-size: 1.8rem;
+    }
+
+    /* Galería */
+    .gallery {
+        padding: 2rem 1.5rem;
+        gap: 1rem;
+    }
+
+    /* Proyectos grid */
+    .proyectos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 14px;
+    }
+
+    /* Clientes grid */
+    .clientes-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* ================================================
+   RESPONSIVE — MÓVIL (max 480px)
+   ================================================ */
+
+@media (max-width: 480px) {
+
+    /* Logo texto más pequeño */
+    .logo {
+        font-size: 1.1rem;
+        gap: 0.4rem;
+    }
+
+    /* Hero lleno de pantalla ajustado */
+    .hero {
+        height: 60vh;
+        min-height: 320px;
+        padding: 1.5rem 1rem;
+    }
+
+    .hero-text {
+        padding: 1.3rem 1.2rem;
+        border-radius: 10px;
+    }
+
+    .hero-text h1 {
+        font-size: 1.6rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-text p {
+        font-size: 0.92rem;
+    }
+
+    /* Card sections */
+    .card-section,
+    .card-section.reverse {
+        padding: 2.8rem 1rem;
+        gap: 1.5rem;
+    }
+
+    .card-section img {
+        border-radius: 12px;
+    }
+
+    .card-text h2 {
+        font-size: 1.5rem;
+    }
+
+    .card-text p {
+        font-size: 0.95rem;
+    }
+
+    /* Simple sections */
+    .simple-section {
+        padding: 2.8rem 1rem;
+    }
+
+    .simple-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .simple-section h3 {
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
+    }
+
+    .simple-section p {
+        font-size: 0.95rem;
+    }
+
+    /* Galería 2 columnas en móvil */
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 1.5rem 1rem;
+        gap: 0.7rem;
+    }
+
+    .gallery img {
+        border-radius: 10px;
+    }
+
+    /* Proyectos: una sola columna */
+    .proyectos-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 24px;
+    }
+
+    .proyecto-card {
+        padding: 14px 16px;
+        font-size: 0.9rem;
+        border-radius: 10px;
+    }
+
+    /* Clientes */
+    .cliente-card {
+        padding: 20px 18px;
+    }
+
+    .cliente-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .cliente-card li {
+        font-size: 0.9rem;
+    }
+
+    .paises-lista li {
+        font-size: 0.92rem;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 1.5rem 1rem;
+        font-size: 0.82rem;
+    }
+
+    /* Nav móvil ajustes */
+    .nav-mobile {
+        width: 78vw;
+        max-width: 280px;
+        padding: 4.5rem 1.5rem 2rem;
+    }
+
+    .nav-mobile a {
+        font-size: 1.05rem;
+        padding: 0.7rem 0.9rem;
+    }
+
+    /* Scroll margin menor en móvil */
+    section {
+        scroll-margin-top: 70px;
+    }
 }
